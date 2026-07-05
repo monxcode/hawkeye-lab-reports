@@ -206,4 +206,7 @@ By working through this repository, a learner should be able to:
 - [`tshark` Manual Page](https://www.wireshark.org/docs/man-pages/tshark.html)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 - [Lockheed Martin Cyber Kill Chain](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html)
-- Companion documents: [`reports/red-team-report.md`](reports/red-team-report.md), [`reports/blue-team-report.md`](reports/blue-team-report.md), [`reports/purple-team-report.md`](reports/purple-team-report.md)
+- Companion documents: 
+  - [`reports/red-team-report.md`](reports/red-team-report.md)
+  - [`reports/blue-team-report.md`](reports/blue-team-report.md) 
+  - [`reports/purple-team-report.md`](reports/purple-team-report.md)
