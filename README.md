@@ -45,6 +45,11 @@ hawkeye-lab-reports/
 ├─ logs/
 │  └─ timeline.md
 │
+├─ PDF-REPORTS/
+│  ├─ Blue-Team-Report.pdf
+│  ├─ Purple-Team-Report.pdf
+│  └─ Red-Team-Report.pdf
+│
 ├─ reports/
 │  ├─ blue-team-report.md
 │  ├─ purple-team-report.md
