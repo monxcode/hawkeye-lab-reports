@@ -135,7 +135,9 @@ Key facts:
 
 The filename theme (`proforma`, "invoices") and the deliberately old/spoofed `MSIE 7.0` user-agent string are both consistent with a phishing-lure-driven, business-email-compromise-style delivery pattern commonly used by commodity information stealers, though the phishing email/lure itself is not present in this capture.
 
-> Screenshot 01 – Replace with actual screenshot of the HTTP GET request for `tkraw_Protected99.exe` in Wireshark
+###### The HTTP GET request for `tkraw_Protected99.exe` in Wireshark
+
+![WireShark](/screenshots/wireshark.png)
 
 ### Privilege Escalation
 
