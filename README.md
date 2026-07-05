@@ -2,7 +2,7 @@
 
 # HawkEye Lab Reports
 
-A forensic network-analysis exercise reconstructing a real-world information-stealer infection from a single packet capture [`stealer.pcap`](../src-data/stealer.pcap), documented through independent Red Team, Blue Team, and Purple Team reports.
+A forensic network-analysis exercise reconstructing a real-world information-stealer infection from a single packet capture [`stealer.pcap`](/src-data/stealer.pcap), documented through independent Red Team, Blue Team, and Purple Team reports.
 
 ---
 
