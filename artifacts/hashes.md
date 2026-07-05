@@ -1,6 +1,6 @@
 # File Hashes
 
-This document records cryptographic hashes for the packet capture itself and for any files extracted from [`pcap/hawkeye.pcap`](../pcap/hawkeye.pcap), as referenced in the [Red Team](../reports/red-team-report.md), [Blue Team](../reports/blue-team-report.md), and [Purple Team](../reports/purple-team-report.md) reports.
+This document records cryptographic hashes for the packet capture itself and for any files extracted from [`src-data/stealer.pcap`](../src-data/stealer.pcap), as referenced in the [Red Team](../reports/red-team-report.md), [Blue Team](../reports/blue-team-report.md), and [Purple Team](../reports/purple-team-report.md) reports.
 
 > If you are working from your own copy of `hawkeye.pcap`, recalculate all hashes locally using the commands in [How to Regenerate These Hashes](#how-to-regenerate-these-hashes) rather than relying solely on the values below, to confirm file integrity in your environment.
 
@@ -18,7 +18,7 @@ This document records cryptographic hashes for the packet capture itself and for
 
 | File | MD5 | SHA1 | SHA256 |
 |---|---|---|---|
-| `pcap/hawkeye.pcap` | *Placeholder — calculate with `md5sum pcap/hawkeye.pcap`* | *Placeholder — calculate with `sha1sum pcap/hawkeye.pcap`* | *Placeholder — calculate with `sha256sum pcap/hawkeye.pcap`* |
+| `src-data/stealer.pcap` | *Placeholder — calculate with `md5sum src-data/stealer.pcap`* | *Placeholder — calculate with `sha1sum src-data/stealer.pcap`* | *Placeholder — calculate with `sha256sum src-data/stealer.pcap`* |
 
 ---
 
@@ -47,19 +47,19 @@ The following file was recovered from HTTP traffic within the capture using `tsh
 
 #### 1. Hash the capture file itself
 ```bash
-md5sum pcap/hawkeye.pcap
-sha1sum pcap/hawkeye.pcap
-sha256sum pcap/hawkeye.pcap
+md5sum src-data/stealer.pcap
+sha1sum src-data/stealer.pcap
+sha256sum src-data/stealer.pcap
 ```
 
 #### (capinfos also reports SHA256/RIPEMD160/SHA1 automatically)
 ```bash
-capinfos pcap/hawkeye.pcap
+capinfos src-data/stealer.pcap
 ```
 #### 2. Extract all HTTP-transferred files
 ```bash
 mkdir -p extracted
-tshark -r pcap/hawkeye.pcap --export-objects http,extracted
+tshark -r src-data/stealer.pcap --export-objects http,extracted
 ```
 
 #### 3. Hash every extracted file

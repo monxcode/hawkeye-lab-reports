@@ -1,6 +1,6 @@
 # Incident Timeline
 
-This timeline consolidates the chronological findings from the [Red Team](../reports/red-team-report.md), [Blue Team](../reports/blue-team-report.md), and [Purple Team](../reports/purple-team-report.md) reports into a single reference table, derived from direct analysis of [`pcap/hawkeye.pcap`](../pcap/hawkeye.pcap).
+This timeline consolidates the chronological findings from the [Red Team](../reports/red-team-report.md), [Blue Team](../reports/blue-team-report.md), and [Purple Team](../reports/purple-team-report.md) reports into a single reference table, derived from direct analysis of [`src-data/stealer.pcap`](../src-data/stealer.pcap).
 
 > All timestamps are in UTC and reflect the timestamps recorded in the packet capture itself. Where an exact time cannot be confirmed from available evidence, `TBD` is used as a placeholder rather than an invented value.
 
@@ -18,7 +18,7 @@ This timeline consolidates the chronological findings from the [Red Team](../rep
 
 | Field | Value |
 |---|---|
-| Capture file | `pcap/hawkeye.pcap` |
+| Capture file | `src-data/stealer.pcap` |
 | Capture start | 2019-04-10 20:37:07 UTC |
 | Capture end | 2019-04-10 21:40:48 UTC |
 | Capture duration | ~63 minutes 41 seconds |
@@ -60,5 +60,5 @@ This timeline consolidates the chronological findings from the [Red Team](../rep
 ## Notes
 
 - The recurring ~10-minute interval between the IP-check beacon and the SMTP exfiltration cycle strongly suggests both behaviors are driven by a single timer/scheduled task within the malware.
-- Entries marked `TBD` represent activity that either occurred outside the boundaries of `pcap/hawkeye.pcap` (e.g., initial lure delivery, host-side execution, incident response actions) or that requires corroborating evidence (endpoint logs, SOC ticketing data) not available in this capture. These should be filled in with actual timestamps once that evidence is available.
+- Entries marked `TBD` represent activity that either occurred outside the boundaries of `src-data/stealer.pcap` (e.g., initial lure delivery, host-side execution, incident response actions) or that requires corroborating evidence (endpoint logs, SOC ticketing data) not available in this capture. These should be filled in with actual timestamps once that evidence is available.
 - For the full technical narrative behind each timeline entry, see the [Red Team Report](../reports/red-team-report.md) (attacker actions) and [Blue Team Report](../reports/blue-team-report.md) (detection and response actions).

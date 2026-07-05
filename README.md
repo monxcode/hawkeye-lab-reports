@@ -2,7 +2,7 @@
 
 # HawkEye Lab Reports
 
-A forensic network-analysis exercise reconstructing a real-world information-stealer infection from a single packet capture (`![stealer.pcap](/src-data/stealer.pcap)`), documented through independent Red Team, Blue Team, and Purple Team reports.
+A forensic network-analysis exercise reconstructing a real-world information-stealer infection from a single packet capture [`stealer.pcap`](../src-data/stealer.pcap), documented through independent Red Team, Blue Team, and Purple Team reports.
 
 ---
 
@@ -13,7 +13,7 @@ A forensic network-analysis exercise reconstructing a real-world information-ste
 3. [Objectives](#objectives)
 4. [Prerequisites](#prerequisites)
 5. [Required Tools](#required-tools)
-6. [How to Analyze `pcap/hawkeye.pcap`](#how-to-analyze-pcaphawkeyepcap)
+6. [How to Analyze `src-data/stealer.pcap`](#how-to-analyze-pcaphawkeyepcap)
 7. [How to Use the Reports](#how-to-use-the-reports)
 8. [Skills Demonstrated](#skills-demonstrated)
 9. [Learning Outcomes](#learning-outcomes)
@@ -29,7 +29,7 @@ HawkEye Lab is a self-contained network-forensics exercise built entirely around
 - **Blue Team** — how the activity could have been detected, contained, and remediated.
 - **Purple Team** — a correlated attack-vs-defense view with prioritized recommendations.
 
-All findings are grounded in direct `tshark`/Wireshark analysis of `pcap/hawkeye.pcap`. Where the capture does not provide enough evidence to support a claim (e.g., host-side persistence mechanisms, which are not visible on the wire), the reports and artifacts use explicit placeholders rather than invented detail.
+All findings are grounded in direct `tshark`/Wireshark analysis of `src-data/stealer.pcap`. Where the capture does not provide enough evidence to support a claim (e.g., host-side persistence mechanisms, which are not visible on the wire), the reports and artifacts use explicit placeholders rather than invented detail.
 
 ---
 
@@ -78,7 +78,7 @@ hawkeye-lab-reports/
 
 - Basic familiarity with TCP/IP networking and common application-layer protocols (HTTP, SMTP, DNS, Kerberos, SMB/LDAP).
 - Basic command-line comfort (Linux/macOS/WSL shell).
-- Read access to `pcap/hawkeye.pcap` in this repository.
+- Read access to `src-data/stealer.pcap` in this repository.
 - No prior malware-analysis experience is required; this exercise focuses on network-layer evidence only.
 
 ---
@@ -95,34 +95,34 @@ hawkeye-lab-reports/
 
 ---
 
-## How to Analyze `pcap/hawkeye.pcap`
+## How to Analyze `src-data/stealer.pcap`
 
 The following commands reproduce the core analysis steps used to produce the reports in this repository.
 
 #### 1. Capture summary and hashing
 ```bash
-capinfos pcap/hawkeye.pcap
+capinfos src-data/stealer.pcap
 ```
  
 #### 2. Protocol hierarchy overview
 ```bash
-tshark -r pcap/hawkeye.pcap -q -z io,phs
+tshark -r src-data/stealer.pcap -q -z io,phs
 ```
  
 #### 3. Top-level IP conversations
 ```bash
-tshark -r pcap/hawkeye.pcap -q -z conv,ip
+tshark -r src-data/stealer.pcap -q -z conv,ip
 ```
  
 #### 4. DNS queries (identify contacted domains)
 ```bash
-tshark -r pcap/hawkeye.pcap -Y "dns.flags.response==0" -T fields \
+tshark -r src-data/stealer.pcap -Y "dns.flags.response==0" -T fields \
   -e frame.time -e ip.src -e dns.qry.name
 ```
  
 #### 5. HTTP requests (identify payload delivery and beacon traffic)
 ```bash
-tshark -r pcap/hawkeye.pcap -Y http.request -T fields \
+tshark -r src-data/stealer.pcap -Y http.request -T fields \
   -e frame.time -e ip.src -e ip.dst -e http.host \
   -e http.request.method -e http.request.uri -e http.user_agent
 ```
@@ -130,7 +130,7 @@ tshark -r pcap/hawkeye.pcap -Y http.request -T fields \
 #### 6. Extract any files transferred over HTTP
 ```bash
 mkdir -p extracted
-tshark -r pcap/hawkeye.pcap --export-objects http,extracted
+tshark -r src-data/stealer.pcap --export-objects http,extracted
 ```
  
 #### 7. Hash any extracted files for IOC documentation
@@ -142,7 +142,7 @@ sha1sum extracted/*
  
 #### 8. SMTP session review (identify exfiltration activity)
 ```bash
-tshark -r pcap/hawkeye.pcap -Y smtp -T fields \
+tshark -r src-data/stealer.pcap -Y smtp -T fields \
   -e frame.time -e ip.src -e ip.dst -e smtp.req.command -e smtp.req.parameter
 ```
  
